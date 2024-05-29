@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary Statistics</title>
+    <link rel="stylesheet" type="text/css" href="stylefinal.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="overview.html">Data Overview</a></li>
+            <li><a href="sum.html">Summary Statistics</a></li>
+            <li><a href="corr.html">Correlation Anlaysis</a></li>
+			<li><a href="genre.html">Playlist Genre Distribution</a></li>
+			<li><a href="scatter.html">Scatter Plots</a></li>
+			<li><a href="box.html">Box Plots</a></li>
+			<li><a href="trends.html">Histograms</a></li>
+			<li><a href="more.html">More Exporing the Data</a></li>
+            <li><a href="clust.html">Clustering Analysis</a></li>
+			<li><a href="reg.html">Linear Regression</a></li>
+            <li><a href="rf.html">Random Forest Regression</a></li>
+			<li><a href="rc.html">Results and Conclusion</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+    <h2>Summary Statistics</h2>
+	<pre>
+		    track_popularity  danceability      energy        key  
+	count      32828.000000  32828.000000  32828.000000  32828.000000   
+	mean          42.483551      0.654850      0.698603      5.373949   
+	std           24.980476      0.145092      0.180916      3.611572   
+	min            0.000000      0.000000      0.000175      0.000000   
+	25%           24.000000      0.563000      0.581000      2.000000   
+	50%           45.000000      0.672000      0.721000      6.000000   
+	75%           62.000000      0.761000      0.840000      9.000000   
+	max          100.000000      0.983000      1.000000     11.000000   
+
+			  loudness        mode      speechiness  acousticness  
+	count  32828.000000  32828.000000  32828.000000  32828.000000   
+	mean      -6.719529      0.565737      0.107053      0.175352   
+	std        2.988641      0.495667      0.101307      0.219644   
+	min      -46.448000      0.000000      0.000000      0.000000   
+	25%       -8.171250      0.000000      0.041000      0.015100   
+	50%       -6.166000      1.000000      0.062500      0.080400   
+	75%       -4.645000      1.000000      0.132000      0.255000   
+	max        1.275000      1.000000      0.918000      0.994000   
+
+		    instrumentalness     liveness     valence        tempo  
+	count      32828.000000  32828.000000  32828.000000  32828.000000   
+	mean           0.084760      0.190175      0.510556    120.883642   
+	std            0.224245      0.154313      0.233152     26.903632   
+	min            0.000000      0.000000      0.000000      0.000000   
+	25%            0.000000      0.092700      0.331000     99.961000   
+	50%            0.000016      0.127000      0.512000    121.984000   
+	75%            0.004830      0.248000      0.693000    133.918250   
+	max            0.994000      0.996000      0.991000    239.440000 
+
+
+	         duration_ms  
+	count   32828.000000  
+	mean   225796.829779  
+	std     59836.492346  
+	min      4000.000000  
+	25%    187804.500000  
+	50%    216000.000000  
+	75%    253581.250000  
+	max    517810.000000  
+	</pre>
+	<p>Summary statistics provide an overview of the distribution of numerical variables in the dataset:</p>
+	<ul>
+    <li><strong>Count:</strong> Number of non-null values in each column.</li>
+    <li><strong>Mean:</strong> Average value of each column.</li>
+    <li><strong>Std:</strong> Standard deviation, indicating the degree of variation.</li>
+    <li><strong>Min:</strong> Minimum value in each column.</li>
+    <li><strong>25%:</strong> 25th percentile, a measure of central tendency.</li>
+    <li><strong>50%:</strong> Median or 50th percentile, separating the higher half from the lower half.</li>
+    <li><strong>75%:</strong> 75th percentile, another measure of central tendency.</li>
+    <li><strong>Max:</strong> Maximum value in each column.</li>
+	</ul>
+    </div>
+</body>
+</html>

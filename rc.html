@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results and Conclusion:</title>
+    <link rel="stylesheet" type="text/css" href="stylefinal.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="overview.html">Data Overview</a></li>
+            <li><a href="sum.html">Summary Statistics</a></li>
+            <li><a href="corr.html">Correlation Anlaysis</a></li>
+			<li><a href="genre.html">Playlist Genre Distribution</a></li>
+			<li><a href="scatter.html">Scatter Plots</a></li>
+			<li><a href="box.html">Box Plots</a></li>
+			<li><a href="trends.html">Histograms</a></li>
+            <li><a href="more.html">More Exporing the Data</a></li>
+            <li><a href="clust.html">Clustering Analysis</a></li>
+			<li><a href="reg.html">Linear Regression</a></li>
+            <li><a href="rf.html">Random Forest Regression</a></li>
+			<li><a href="rc.html">Results and Conclusion</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+   <h2>Results and Conclusion:</h2>
+    <p>
+	In the exploration of predicting track popularity using various regression models and analyzing feature importance, here are the following key findings:
+	Linear Regression and Variations:
+	The initial linear regression model exhibited a low R-squared value (5.33%), indicating limited explanatory power in predicting track popularity.
+	Polynomial Regression: The introduction of polynomial features did not significantly improve model performance, with degree 2 and 3 performing better than degree 4. Ridge regression, a regularization technique, did not lead to a substantial improvement in Mean Squared Error (MSE), suggesting that multicollinearity or overfitting might not be prominent issues. Outlier detection techniques, such as Isolation Forest, did not yield a notable improvement in model performance either. Cross-validation results were consistent with test set MSE, indicating stable performance across different training subsets.
+	Performance Metrics:
+	Random Forest Regressor: Outperformed the initial linear regression model, showcasing a lower MSE. Feature importance analysis highlighted "tempo," "acousticness," and "speechiness" as most influential features.
+	Support Vector Regressor (SVR): Had a higher MSE compared to Random Forest Regressor, indicating less effectiveness for this dataset.
+	Genre and Track Popularity Distribution:
+	Playlist Genres: EDM, Rap, and Pop emerged as the top three genres, reflecting a diverse representation of musical taste.
+	Average Track Popularity by Genre: Latin tracks had the highest average popularity, followed by Pop and Rap. Some more instresting findings were made regarding the average track popularity over time. 
+	Correlation Analysis:
+	Positive Correlations: Energy and loudness were positively correlated, aligning with the expectation that higher energy corresponds to louder tracks. Danceability and valence also showed a moderate positive correlation.
+	Negative Correlations: Energy vs. acousticness and loudness, suggesting that energetic tracks tend to have lower acousticness and loudness.
+	Additional Observations:
+	Instrumentalness and Valence: Negatively correlated, indicating instrumental tracks are less likely to evoke a positive mood.
+	Speechiness and Danceability: Positively correlated, suggesting that spoken words may contribute to a track's danceability.
+	Release Year and Popularity: Slight positive correlation, indicating a potential trend of newer tracks being more popular.
+	Remixes: On average, remixes exhibited slightly higher energy and loudness but did not contribute much to tracks overall popularity
+	</p>
+
+	<p>
+	Conclusion:
+	While so much more can be done to explore the data, this analysis reveals that while the initial linear regression model and its variations had limited success in predicting track popularity, the Random Forest Regressor demonstrated superior performance. Important features such as tempo, acousticness, and speechiness were identified as most influential in predicting popularity.
+	The genre distribution highlighted a diverse representation of musical preferences, with Latin tracks consistently ranking as the most popular on average. Correlation analysis provided insights into the relationships between various musical features, offering valuable information for understanding factors influencing track popularity.
+	In conclusion, the dataset encompasses a wide array of genres and further analysis and visualization could uncover more intricate patterns. The success of the Random Forest Regressor suggests the importance of exploring non-linear relationships in predicting track popularity. Additionally, continued exploration of genre-specific patterns and trends could enhance our understanding of the factors contributing to a track's popularity.
+	</p>
+    </div>
+</body>
+</html>

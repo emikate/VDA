@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering Analysis</title>
+    <link rel="stylesheet" type="text/css" href="stylefinal.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="overview.html">Data Overview</a></li>
+            <li><a href="sum.html">Summary Statistics</a></li>
+            <li><a href="corr.html">Correlation Anlaysis</a></li>
+			<li><a href="genre.html">Playlist Genre Distribution</a></li>
+			<li><a href="scatter.html">Scatter Plots</a></li>
+			<li><a href="box.html">Box Plots</a></li>
+			<li><a href="trends.html">Histograms</a></li>
+            <li><a href="more.html">More Exporing the Data</a></li>
+            <li><a href="clust.html">Clustering Analysis</a></li>
+			<li><a href="reg.html">Linear Regression</a></li>
+            <li><a href="rf.html">Random Forest Regression</a></li>
+			<li><a href="rc.html">Results and Conclusion</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+   <h2>Clustering Analysis:</h2>
+   <img src="4.2.png" alt="Elbow Method">
+	<pre>
+Silhouette Score for 5 clusters: 0.15533288111120885 
+         danceability    energy  loudness  speechiness  acousticness  
+Cluster                                                                
+0           -0.362244 -1.487607 -1.243313    -0.341187      1.520141   
+1            0.562835  0.142865  0.171033    -0.322242     -0.160677   
+2            0.472930 -0.171274 -0.029711     2.020169      0.026654   
+3           -0.769091  0.569366  0.484576    -0.329155     -0.495719   
+4            0.040630  0.467636 -0.080272    -0.348207     -0.452081   
+
+         instrumentalness  liveness   valence     tempo  
+Cluster                                                  
+0                0.010296 -0.218600 -0.511853 -0.312492  
+1               -0.312434 -0.222987  0.689803 -0.243953  
+2               -0.332819  0.084932  0.164730  0.053666  
+3               -0.265123  0.357397 -0.535306  0.405589  
+4                2.954805 -0.002980 -0.532605  0.155901
+	</pre>
+	<img src="5.png" alt="2d PCA">
+	<pre>
+	Centroids for Each Cluster:
+   danceability    energy  loudness  speechiness  acousticness  
+0     -0.362051 -1.487118 -1.242672    -0.341225      1.520527   
+1      0.562345  0.143681  0.171130    -0.322564     -0.160704   
+2      0.473031 -0.171626 -0.029838     2.019375      0.026316   
+3     -0.768975  0.568893  0.484686    -0.329093     -0.496296   
+4      0.040630  0.467636 -0.080272    -0.348207     -0.452081   
+
+   instrumentalness  liveness   valence     tempo  
+0          0.010137 -0.218212 -0.511372 -0.312236  
+1         -0.312389 -0.222473  0.690515 -0.243523  
+2         -0.332848  0.084498  0.164400  0.052849  
+3         -0.265123  0.356908 -0.536401  0.405519  
+4          2.954805 -0.002980 -0.532605  0.155901  
+	</pre>
+	<p> The elbow method helps us decide the amount of clusters to use. The Silhouette Score of 0.1553 suggests that the clustering is not very dense and the clusters may have some degree of overlap. Characteristics: Cluster 0: Low Energy, Low Valence, Acoustic: This cluster has low danceability, low energy, and low valence.The tracks in this cluster tend to be acoustic (high acousticness) and have lower instrumentalness.The tempo is also relatively lower.
+		Cluster 1: Moderate Energy, High Valence, Not Acoustic: This cluster exhibits moderate danceability, energy, and high valence.Tracks in this cluster are less acoustic and have lower instrumentalness.The tempo is moderate. 
+		Cluster 2: High Speechiness, Moderate Valence, Not Acoustic: This cluster has high speechiness and moderate valence. Tracks are not very acoustic and they have relatively lower instrumentalness. The tempo might be more varied.
+		Cluster 3: Moderate Energy, Moderate Valence, Not Acoustic: This cluster shows moderate values for danceability, energy, and valence. The tracks are not very acoustic and have lower instrumentalness. The tempo is likely to be moderate.
+		Cluster 4: High Instrumentalness, Low Danceability, Low Valence: This cluster is characterized by high instrumentalness and low values for danceability and valence. Tracks may have instrumental or orchestral elements. The tempo is moderate.
+		General Observations:
+		Clusters 1 and 2 appear to represent more energetic and lively tracks, with Cluster 1 having more valence.
+		Cluster 0 represents calmer, possibly acoustic tracks with lower energy.
+		Cluster 3 is a more balanced cluster with moderate values across features.
+		Cluster 4 stands out with high instrumentalness, indicating potentially instrumental or non-lyrical music.
+		The centroids represent the average values of each feature within each cluster. Analyzing the centroids can provide additional insights into the characteristics of each cluster. 
+		This cluster has the lowest average values for danceability, energy, valence, and tempo. It is characterized by low instrumentalness and high acousticness.
+		Cluster 1: Moderate Energy, High Valence, Not Acoustic: This cluster has the highest average values for danceability, energy, and valence. It is less acoustic, with a moderate tempo and lower instrumentalness. 
+		Cluster 2: High Speechiness, Moderate Valence, Not Acoustic: This cluster has the highest average speechiness and moderate valence. It is not very acoustic and has a moderate tempo.
+		Cluster 3: Moderate Energy, Moderate Valence, Not Acoustic: This cluster exhibits moderate average values for danceability, energy, and valence. It is not very acoustic, with a moderate tempo and lower instrumentalness.
+		Cluster 4: High Instrumentalness, Low Danceability, Low Valence: This cluster has the highest average instrumentalness and the lowest values for danceability and valence. It is characterized by a moderate tempo and lower energy. </p>
+    </div>
+</body>
+</html>

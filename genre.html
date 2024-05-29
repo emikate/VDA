@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Genre Distribution</title>
+    <link rel="stylesheet" type="text/css" href="stylefinal.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="overview.html">Data Overview</a></li>
+            <li><a href="sum.html">Summary Statistics</a></li>
+            <li><a href="corr.html">Correlation Anlaysis</a></li>
+			<li><a href="genre.html">Playlist Genre Distribution</a></li>
+			<li><a href="scatter.html">Scatter Plots</a></li>
+			<li><a href="box.html">Box Plots</a></li>
+			<li><a href="trends.html">Histograms</a></li>
+            <li><a href="more.html">More Exporing the Data</a></li>
+            <li><a href="clust.html">Clustering Analysis</a></li>
+			<li><a href="reg.html">Linear Regression</a></li>
+            <li><a href="rf.html">Random Forest Regression</a></li>
+			<li><a href="rc.html">Results and Conclusion</a></li>
+        </ul>
+    </nav>
+<h2>Playlist Genre Distribution:</h2>
+ <p>The distribution of songs across different playlist genres was visualized using a count plot.</p>
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+	<div class="chart-container" id="chart-container"></div>
+	<script>
+    const data = [
+      { playlist_genre: 'pop', count: 5507},
+      { playlist_genre: 'rock', count: 4951},
+      { playlist_genre: 'rap', count: 5746},
+      { playlist_genre: 'edm', count: 6043},
+	  { playlist_genre: 'r&b', count: 5431},
+	  { playlist_genre: 'latin', count: 5155}
+    ];
+	const margin = { top: 20, right: 20, bottom: 50, left: 60 };
+	const width = 800;
+	const height = 400;
+
+	const svg = d3.select("#chart-container")
+	  .append("svg")
+	  .attr("width", width + margin.left + margin.right)
+	  .attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+	  .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const colors = d3.scaleOrdinal()
+      .range(['#682d63', '#4f1c4a', '#44173c', '#3a1332', '#2f0e27']);
+
+    const x = d3.scaleBand()
+      .domain(data.map(d => d.playlist_genre))
+      .range([0, width])
+      .padding(0.1);
+
+    const y = d3.scaleLinear()
+      .domain([0, d3.max(data, d => d.count)])
+      .range([height, 0]);
+
+    svg.append("g")
+      .attr("transform", `translate(0,${height})`)
+      .call(d3.axisBottom(x))
+      .selectAll("text")
+      .attr("transform", "rotate(-45)")
+      .style("text-anchor", "end");
+
+    svg.append("g")
+      .call(d3.axisLeft(y));
+
+    svg.selectAll("rect")
+      .data(data)
+      .enter().append("rect")
+      .attr("x", d => x(d.playlist_genre))
+      .attr("y", d => y(d.count))
+      .attr("width", x.bandwidth())
+      .attr("height", d => height - y(d.count))
+      .attr("fill", d => colors(d.playlist_genre));
+
+    svg.append("text")
+      .attr("x", width / 2)
+      .attr("y", height + margin.top + 20)
+      .attr("text-anchor", "middle")
+      .text("Playlist Genres");
+
+    svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("x", 0 - height / 2)
+      .attr("y", 0 - margin.left)
+      .attr("dy", "1em")
+      .attr("text-anchor", "middle")
+      .text("Count");
+
+ </script>
+ <pre>
+	Distribution of Playlist Genres:
+	Genres (Top 3): EDM (18.41%), Rap (17.49%), Pop (16.78%).
+	Genres (Bottom 2): Latin (15.70%), Rock (15.08%).
+	
+	Average Track Popularity by Playlist Genre:
+	Top Genre: Latin (47.04).
+	Other Top Genres (Approx): Pop (47.74), Rap (43.24), Rock (41.73), EDM (34.83), R&B (41.22).
+	
+	Latin genre tracks, on average, have the highest popularity, followed by Pop and Rap.
+	</pre>
+	
+ <p> This distribution suggests a diverse and fairly balanced representation of musical taste, with electronic dance music having the most appearances.
+ The popularity of rap and pop is evident reflecting their widespread appeal. The inclusion of Latin and R&B genres in the top ranks highlights
+ the influence and global reach of these styles. The presence of rock, though slightly less frequent, underscores its popularity in the
+ music landscape.</p>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Regression</title>
+    <link rel="stylesheet" type="text/css" href="stylefinal.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="overview.html">Data Overview</a></li>
+            <li><a href="sum.html">Summary Statistics</a></li>
+            <li><a href="corr.html">Correlation Anlaysis</a></li>
+			<li><a href="genre.html">Playlist Genre Distribution</a></li>
+			<li><a href="scatter.html">Scatter Plots</a></li>
+			<li><a href="box.html">Box Plots</a></li>
+			<li><a href="trends.html">Histograms</a></li>
+            <li><a href="more.html">More Exporing the Data</a></li>
+            <li><a href="clust.html">Clustering Analysis</a></li>
+			<li><a href="reg.html">Linear Regression</a></li>
+            <li><a href="rf.html">Random Forest Regression</a></li>
+			<li><a href="rc.html">Results and Conclusion</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+   <h2>Linear Regression:</h2>
+   <pre> 
+   Coefficients:
+[ 0.92722201 -5.77928171  5.21745571 -0.63486976  1.04527355 -2.7172926
+ -0.61553203  0.68778004  0.61964084]
+Intercept: 42.54283755997258
+R-squared: 0.05331783902821985
+Feature Importance:
+            Feature  Coefficient
+2          loudness     5.217456
+4      acousticness     1.045274
+0      danceability     0.927222
+7           valence     0.687780
+8             tempo     0.619641
+6          liveness    -0.615532
+3       speechiness    -0.634870
+5  instrumentalness    -2.717293
+1            energy    -5.779282
+</pre> 
+<img src="predicted_popularity_histogram.png" alt="sp">
+<img src="scatter_plot.png" alt="sp1">
+<pre>
+Residuals:
+28680    17.119091
+3578    -34.633051
+5304     -9.856749
+2678    -38.553237
+16995     0.287367
+           ...    
+29098   -18.352023
+30498    11.992870
+25534   -41.838998
+10603    -6.352101
+31896   -38.671600
+</pre>
+<img src="residual_histogram.png" alt="sp2">
+<pre> Mean Squared Error with Polynomial Regression: 572.6918931461803
+	  Mean Squared Error with Ridge Regression: 579.3554620595248 
+	  Mean Squared Error with Ridge Alpha 0.01: 579.3551786758095
+	  Mean Squared Error with Ridge Alpha 0.1: 579.3552040671708
+	  Mean Squared Error with Ridge Alpha 1.0: 579.3554620595248
+	  Mean Squared Error with Ridge Alpha 10.0: 579.3584228196024
+	  Mean Squared Error with Ridge Alpha 100.0: 579.4089056070233
+	  Mean Squared Error with Outlier Detection: 585.8503371896913
+	  Mean Squared Error with Isolation Forest: 585.8503371896913
+	  Mean Squared Error with Local Outlier Factor: 585.8503371896913
+	  Average Mean Squared Error with Cross-validation: 585.8889613191689
+	  
+	  R-squared: 0.0563
+	  Mean Absolute Error (MAE): 20.0459
+      Root Mean Squared Error (RMSE): 24.0698
+	  </pre>
+	  <p>
+	    Mean Squared Error (MSE): The MSE of 581.16 indicates the average squared difference between the actual and predicted track popularity values. Lower MSE values are desirable as it suggests a better fit, but the interpretation depends on the scale of track popularity. 
+		Coefficients and Intercept: Intercept (42.54): This is the predicted track popularity when all features are zero. Coefficients: These represent the change in the predicted track popularity for a one-unit change in each feature holding other features constant.
+		Notably, loudness, acousticness, danceability, and valence all have positive coefficients, suggesting a positive impact on popularity. Energy, instrumentalness, and speechiness have negative coefficients, indicating a negative impact.
+		R-squared (0.0533): The R-squared value is low (5.33%), suggesting that the linear regression model explains only a small portion of the variance in track popularity. This indicates that the features used may not be strong predictors, or the relationship might not be linear.
+
+		Feature Importance:
+		Loudness (5.22): It has the highest positive coefficient, indicating a strong positive impact on track popularity.
+		Energy (-5.78): It has the highest negative coefficient, suggesting a strong negative impact on popularity.
+		Residuals: The residuals represent the differences between actual and predicted values. The histogram of residuals indicates the distribution, and it seems the model has difficulty predicting extreme values.
+		Polynomial Regression: Mean Squared Error (MSE): 572.69 Analysis: The polynomial regression slightly improved the MSE compared to the original linear regression but not significantly. It suggests that introducing polynomial features of degree 2 might not be beneficial.
+		Ridge Regression (Regularization): Mean Squared Error (MSE): 579.36 Analysis: Ridge regression didn't lead to a significant improvement in MSE compared to the original linear regression. However, regularization methods like Ridge are more useful when dealing with multicollinearity or overfitting.
+		Outlier Detection: Mean Squared Error (MSE): 585.85 Analysis: The performance with outlier detection appears to be similar to the original linear regression. 
+		Cross-Validation: Average Mean Squared Error (CV): 585.89
+		Analysis: Cross-validation provides an estimate of the model's performance on data it hasnt seen yet. The CV result is consistent with the test set MSE, indicating that the model's performance is relatively stable across different subsets of the train data. 
+		further Analysis:
+		Polynomial Regression: Polynomial regression with degree 4 resulted in increased Mean Squared Error (MSE). Degrees 2 and 3 seem to perform better.
+		Ridge Regression:Ridge regression with different alpha values did not significantly affect MSE. The MSE values are consistent across the alpha values.
+		Outlier Detection: Both Isolation Forest and Local Outlier Factor show similar MSE after outlier removal. 
+		Cross-Validation: Cross-validation results in a similar average MSE as seen in the initial evaluation. This suggests that the model's performance is consistent across different training sets.
+		Performance Metrics: R-squared is relatively low, indicating that the model explains only a small portion of the variance in the target variable.
+		Mean Absolute Error (MAE) is 20.0459, which represents the average absolute difference between predicted and actual values.
+		Root Mean Squared Error (RMSE) is 24.0698, providing an estimate of how spread out the residuals are. </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Forest Regression</title>
+    <link rel="stylesheet" type="text/css" href="stylefinal.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="overview.html">Data Overview</a></li>
+            <li><a href="sum.html">Summary Statistics</a></li>
+            <li><a href="corr.html">Correlation Anlaysis</a></li>
+			<li><a href="genre.html">Playlist Genre Distribution</a></li>
+			<li><a href="scatter.html">Scatter Plots</a></li>
+			<li><a href="box.html">Box Plots</a></li>
+			<li><a href="trends.html">Histograms</a></li>
+            <li><a href="more.html">More Exporing the Data</a></li>
+            <li><a href="clust.html">Clustering Analysis</a></li>
+			<li><a href="reg.html">Linear Regression</a></li>
+            <li><a href="rf.html">Random Forest Regression</a></li>
+			<li><a href="rc.html">Results and Conclusion</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+   <h2>Random Forest Regression:</h2>
+<pre> 
+Mean Squared Error with RandomForestRegressor: 455.29249675192807
+Mean Squared Error with SVR: 579.2103688567984 
+Mean Squared Error with Tuned RandomForestRegressor: 450.7029230560829
+  
+Feature Importance with RandomForestRegressor:
+            Feature  Importance
+0      danceability    0.104881
+1            energy    0.114683
+2          loudness    0.127293
+3       speechiness    0.108683
+4      acousticness    0.107884
+5  instrumentalness    0.102298
+6          liveness    0.105664
+7           valence    0.107996
+8             tempo    0.120618
+</pre> 
+	<p>
+	Random Forest Regressor:outperformed the initial linear regression model, achieving a lower MSE.
+	Feature importance analysis reveals that "tempo," "acousticness," and "speechiness" are among the most influential features.
+	Support Vector Regressor (SVR):SVR has a higher MSE compared to Random Forest Regressor, indicating a less effective model for this dataset (Same more or less).
+	Model Performance: The initial linear regression model, polynomial regression, and ridge regression showed limited improvement in predicting track popularity. The Mean Squared Error (MSE) and R-squared values indicate that the models have room for improvement.
+	Feature Importance:Features such as danceability, energy, loudness, and acousticness appear to be important in predicting track popularity. The RandomForestRegressor highlighted these features as significant contributors.
+	Model Comparison: RandomForestRegressor outperformed the Support Vector Regressor (SVR) in terms of Mean Squared Error. The feature importance analysis of RandomForestRegressor provides insights into which features contribute the most to predictions in this model. </p>
+    </div>
+</body>
+</html>

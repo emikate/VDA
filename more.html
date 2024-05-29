@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Exploratory Data Visualizaion</title>
+    <link rel="stylesheet" type="text/css" href="stylefinal.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="overview.html">Data Overview</a></li>
+            <li><a href="sum.html">Summary Statistics</a></li>
+            <li><a href="corr.html">Correlation Anlaysis</a></li>
+			<li><a href="genre.html">Playlist Genre Distribution</a></li>
+			<li><a href="scatter.html">Scatter Plots</a></li>
+			<li><a href="trends.html">Histograms</a></li>
+			<li><a href="box.html">Box Plots</a></li>
+            <li><a href="more.html">More Exporing the Data</a></li>
+            <li><a href="clust.html">Clustering Analysis</a></li>
+			<li><a href="reg.html">Linear Regression</a></li>
+            <li><a href="rf.html">Random Forest Regression</a></li>
+			<li><a href="rc.html">Results and Conclusion</a></li>
+        </ul>
+    </nav>
+<h1>More Exploratory Data Visualization (in Python):</h1>
+    <p>Several visualizations were created to explore relationships between track popularity and various features, such as loudness, tempo, and acousticness.</p>
+	<pre>
+		Percentage of Tracks that are Remixes:
+		Percentage: 6.43%.
+		
+		A small percentage of tracks in the dataset are remixes.
+		
+		Percentage of Unique Values in Categorical Columns:
+		track_id             86.365298
+		track_name           71.429877
+		track_artist         32.569758
+		track_album_id       68.670038
+		track_album_name     60.140734
+		playlist_name         1.367735
+		playlist_id           1.434751
+		playlist_genre        0.018277
+		playlist_subgenre     0.073108
+		dtype: float64
+
+		Distribution of Playlist Genres:
+		edm      18.408066
+		rap      17.494212
+		pop      16.775314
+		r&b      16.543804
+		latin    15.696966
+		rock     15.081638
+		Name: playlist_genre, dtype: float64
+
+		Average Track Popularity by Playlist Genre:
+		playlist_genre
+		edm      34.833526
+		latin    47.044828
+		pop      47.744870
+		r&b      41.223532
+		rap      43.238029
+		rock     41.728338
+		Name: track_popularity, dtype: float64
+	</pre>
+	<img src="1.png" alt="1">
+	<img src="2.2.png" alt="2">
+	<img src="3.png" alt="3">
+	<p> The first plot shows an interesting relationship between tracks that are instrumental and acoustic. The second plot shows an interesting relationship between genre and popularity. EDM appears around the 1980's with large shifts in popularity, becoming more normal after during the 2000s. Rock music also sky rockets and dips quite low during the 1960s-1970s, becoming more normal during the 1980s.
+		The third plot shows a slighly lower impact on a tracks popularity if remix is true. </p>
+	
+	
+</body>
+</html>

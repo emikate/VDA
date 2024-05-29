@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scatter Plots</title>
+    <link rel="stylesheet" type="text/css" href="stylefinal.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="overview.html">Data Overview</a></li>
+            <li><a href="sum.html">Summary Statistics</a></li>
+            <li><a href="corr.html">Correlation Anlaysis</a></li>
+			<li><a href="genre.html">Playlist Genre Distribution</a></li>
+			<li><a href="scatter.html">Scatter Plots</a></li>
+			<li><a href="box.html">Box Plots</a></li>
+			<li><a href="trends.html">Histograms</a></li>
+            <li><a href="more.html">More Exporing the Data</a></li>
+            <li><a href="clust.html">Clustering Analysis</a></li>
+			<li><a href="reg.html">Linear Regression</a></li>
+            <li><a href="rf.html">Random Forest Regression</a></li>
+			<li><a href="rc.html">Results and Conclusion</a></li>
+        </ul>
+    </nav>
+	<div id="scatter-plots-container style="margin-top: 20px;"></div>
+	<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+	<div id="tooltip"></div>
+	<h2>Scatter Plots:</h2>
+	<p>These scatter plots observe relationships between track's audio feautures and the track's popularity. Here's a look: (hover over points to see individual tracks)</p>
+	<script>
+    d3.csv("spotify_songs.csv").then(data => {
+      const features = ['danceability', 'energy', 'key', 'loudness', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo'];
+
+      features.forEach((feature, index) => {
+        createScatterPlot(data, feature, `scatter-plot-${index}`);
+      });
+
+      function createScatterPlot(data, feature, containerId) {
+        const margin = { top: 40, right: 20, bottom: 70, left: 40 };
+        const width = 300 - margin.left - margin.right;
+        const height = 200 - margin.top - margin.bottom;
+		const scatterPlotContainer = d3.select("#scatter-plots-container");
+        const svg = d3.select("body").append("div")
+          .attr("id", containerId)
+          .attr("class", "scatter-plot")
+          .append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+          .attr("transform", `translate(${width / 2},${height / 2})`);
+
+			scatterPlotContainer.append("div")
+			.attr("id", containerId)
+			.attr("class", "scatter-plot")
+			.append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform", `translate(${width / 2},${height / 2})`);
+			
+        // x scale
+        const xScale = d3.scaleLinear()
+          .domain([d3.min(data, d => +d[feature]), d3.max(data, d => +d[feature])])
+          .range([0, width]);
+			//y scale
+        const yScale = d3.scaleLinear()
+          .domain([0, d3.max(data, d => +d.track_popularity)])
+          .range([height, 0]);
+
+        // point
+       svg.selectAll("circle")
+		.data(data)
+		.enter().append("circle")
+		.attr("cx", d => xScale(+d[feature]))
+		.attr("cy", d => yScale(+d.track_popularity))
+		.attr("r", 3)
+		.attr("fill", "#44173c") 
+			.on("mouseover", function (event, d) {
+			const tooltip = d3.select("#tooltip");
+			tooltip.transition().duration(200).style("opacity", .9);
+			tooltip.html(`
+			Track: ${d.track_name}<br>
+			Artist: ${d.track_artist}<br>
+			Popularity: ${d.track_popularity}<br>
+			${feature.charAt(0).toUpperCase() + feature.slice(1)}: ${d[feature]}
+		`)
+		.style("left", (event.pageX + 10) + "px") 
+		.style("top", (event.pageY - 10) + "px"); 
+		})
+		.on("mouseout", function () {
+		const tooltip = d3.select("#tooltip");
+			tooltip.transition().duration(500).style("opacity", 0);
+		});
+
+        // x axis
+        svg.append("g")
+          .attr("transform", `translate(0, ${height})`)
+          .call(d3.axisBottom(xScale));
+
+        // y axis
+        svg.append("g")
+          .call(d3.axisLeft(yScale));
+
+        // x axis label 
+        svg.append("text")
+          .attr("x", width / 2)
+          .attr("y", height + margin.top)
+          .attr("text-anchor", "middle")
+          .style("font-size", "12px")
+          .text(`${feature.charAt(0).toUpperCase() + feature.slice(1)}`);
+
+        // y axis label	
+        svg.append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("x", -height / 2)
+          .attr("y", -margin.left)
+          .attr("dy", "1em")
+          .attr("text-anchor", "middle")
+          .style("font-size", "12px")
+          .text("Popularity");
+
+        
+        svg.append("text")
+          .attr("x", width / 2)
+          .attr("y", -margin.top / 2)
+          .attr("text-anchor", "middle")
+          .style("font-size", "12px")
+          .text(`${feature.charAt(0).toUpperCase() + feature.slice(1)} vs Popularity`);
+      }
+    });
+</script>
+</body>
+</html>

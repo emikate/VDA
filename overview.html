@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview</title>
+    <link rel="stylesheet" type="text/css" href="stylefinal.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="overview.html">Data Overview</a></li>
+            <li><a href="sum.html">Summary Statistics</a></li>
+            <li><a href="corr.html">Correlation Anlaysis</a></li>
+			<li><a href="genre.html">Playlist Genre Distribution</a></li>
+			<li><a href="scatter.html">Scatter Plots</a></li>
+			<li><a href="box.html">Box Plots</a></li>
+			<li><a href="trends.html">Histograms</a></li>
+            <li><a href="more.html">More Exporing the Data</a></li>
+            <li><a href="clust.html">Clustering Analysis</a></li>
+			<li><a href="reg.html">Linear Regression</a></li>
+            <li><a href="rf.html">Random Forest Regression</a></li>
+			<li><a href="rc.html">Results and Conclusion</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+   <h2>Data Overview:</h2>
+    <p>The dataset used for this analysis contains information about Spotify songs.</p>
+	<pre>
+	
+	Columns:
+	track_id- char, unique song id
+	track_name- char, song name	
+	track_artist- char, artist name	
+	track_popularity- double, higher the number, higher the popularity
+	track_album_id- char, unique album id	
+	track_album_name- char, album name	
+	track_album_release_date- char, date of release	
+	playlist_name- char, name of playlist	
+	playlist_id- char, unique playlist id	
+	playlist_genre- char, playlist genre	
+	playlist_subgenre- char, playlist subgenre	
+	danceability- double, higher the value, more 'danceable' song is
+	energy- double, higher the value, more energy the songs contains
+	key- double, estimated overall key of the track, -1 if no key detected  
+	loudness- double, overall loudness of track in decibels	
+	mode- double, indicates the modality: major or minor	
+	speechiness- double, measured presence of spoken word 
+	acousticness- double, confidence measure of whether or not track is acoustic
+	instrumentalness- confidence measure of whether or not song contains vocals	
+	liveness- double, detects presence of audience in song	
+	valence- double, positiveness conveyed in song
+	tempo- double, estimated tempo in BPM	
+	duration_ms- double, duration of song in milliseconds
+	
+	Source: 
+	Spotify's API
+	
+	</pre>
+	<h2>Goal:</h2>
+	<p>The goal of this analysis is to explore the data and find meaningful correlations. Additionally, exploring the power of certain models in predicting a song's populartity using audio feautures.</p>
+    <h2>Data Cleaning:</h2>
+    <p>Simply removing missing values/dupicates did the trick.</p>
+    </div>
+</body>
+</html>
